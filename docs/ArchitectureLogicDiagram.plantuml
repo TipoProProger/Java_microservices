@@ -1,0 +1,21 @@
+@startuml
+object NGINX
+object "Микросервис закупок" as sell
+object "Микросервис продаж" as buy
+object "Микросервис истории заказов" as history
+object "Микросервис меню" as menu
+object KeyCloak
+NGINX --> sell
+NGINX --> buy
+NGINX --> history
+NGINX --> menu
+NGINX --> KeyCloak
+
+sell --> buy : "List<Offer>"
+buy --> history : "List<CartProduct>"
+
+menu -- sell : heartbeat
+menu -- buy : heartbeat
+menu -- history : heartbeat
+
+@enduml
