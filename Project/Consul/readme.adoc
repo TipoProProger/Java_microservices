@@ -1,0 +1,15 @@
+Deploy
+------
+# docker run -p 8500:8500 consul
+
+in nginx folder:
+    docker build -t nginx .
+
+export HOST_IP=127.0.0.1
+docker-compose up -d
+
+
+Links
+-----
+1. https://medium.com/@yazidaqel/quarkus-configuration-using-consul-d077dc6d5d3
+2. https://medium.com/swlh/lets-build-microservices-part-iii-20e9e5c780a0

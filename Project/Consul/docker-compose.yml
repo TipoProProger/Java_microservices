@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    links:
+      - consul
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:172.32.0.1"
+
+  consul:
+    command: -server -bootstrap -advertise ${HOST_IP}
+    image: progrium/consul
+    container_name: consul
+    logging:
+        driver: json-file
+    ports:
+      - "8500:8500"
+    extra_hosts:
+      - "host.docker.internal:172.32.0.1"
